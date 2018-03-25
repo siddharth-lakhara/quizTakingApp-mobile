@@ -1,0 +1,70 @@
+
+.Leaderboard-main {
+    padding-top: 10px;
+    font-size: 20px;
+    
+}
+
+.Leaderboard-scores {
+    text-align: left;
+    padding-left: 30px;
+    color: #EA9838;
+}
+
+.Leaderboard-userScore {
+    color: black;
+}
+
+.Leaderboard-score1 {
+    font-size: 40px;   
+}
+
+.Leaderboard-score2 {
+    font-weight: bold;
+}
+
+.ScoreBoard-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 30px;
+}
+
+.ScoreBoard-contentAligner {
+    margin: 0px;
+    padding-left: 5%;
+    width: 80%;
+    text-align: left;
+}
+
+.ScoreBoard-board {
+    background-color: #53BBE1;
+    margin: 10px;
+    width: 50%;
+    display: flex;
+    flex-wrap: nowrap;
+    border: 2px solid black;
+}
+
+.ScoreBoard-board-username {
+    color: white;
+
+}
+
+.ScoreBoard-board-score {
+    align-self: right;
+    color: white;
+}
+
+.Leaderboard-btn:focus {
+    outline: 0;
+}
+
+.Leaderboard-btn {
+    border: 2px solid black;
+    border-radius: 20px;
+    width: 20%;
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 30px;
+}
