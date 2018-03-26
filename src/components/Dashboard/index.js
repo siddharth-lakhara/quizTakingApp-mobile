@@ -4,7 +4,8 @@ import {
   View,
   Text,
 } from 'react-native';
-
+import { RadioButtons } from 'react-native-radio-buttons';
+import styles from './dashboardStyles';
 // options: Array[4]
 // question: "What is the capital of India"
 // questionid: 12
@@ -12,33 +13,32 @@ import {
 const Questions = (props) => {
   const { data, responses } = props;
   const questionBox = data.map((questions, index) => {
-    const questionTitle = <div className="Question-index">Questions {index + 1}</div>;
-    const questionText = <div className="Question-text"> {questions.question} </div>;
+    const questionTitle = <View><Text style={styles.QuestionIndex}>Questions {index + 1}</Text></View>;
+    const questionText = <View><Text style={styles.QuestionText}> {questions.question} </Text></View>;
     const optionArray = questions.options;
-    const optionDiv = optionArray.map(e => (
-      <label className="Question-options-container">
-        <input
-          type="radio"
-          value={e}
-          key={questions.questionid}
-          className="Question-options-elem"
-          checked={responses[questions.questionid] === e}
-          onClick={(event) => {
-            responses[questions.questionid] = (event.target.value);
-            props.updateResponses(responses, questions.questionid);
-          }}
-        />
-        &nbsp;{e}<br />
-      </label>
-    ));
+    console.log(optionArray);
+    // const optionDiv = optionArray.map(e => (
+    //   <View style={styles.QuestionOptionsContainer}>
+    //     <RadioButtons
+    //       options={e}
+    //       style={styles.QuestionOptionsElem}
+    //       selectedOption={responses[questions.questionid] === e}
+    //       onSelection={(event) => {
+    //         responses[questions.questionid] = (event.target.value);
+    //         props.updateResponses(responses, questions.questionid);
+    //       }}
+    //     />
+    //     {/* &nbsp;{e}<br /> */}
+    //   </View>
+    // ));
     return (
-      <div className="questionBox" key={questions.questionid}>
+      <View style={styles.questionBox} key={questions.questionid}>
         {questionTitle}
         {questionText}
-        <div className="Question-options">
+        {/* <View className="Question-options">
           {optionDiv}
-        </div>
-      </div>
+        </View> */}
+      </View>
     );
   });
 
@@ -61,11 +61,13 @@ class DashBoard extends React.Component {
   }
 
   componentDidMount() {
-    fetch('/fetch').then(res => res.json())
+    fetch('http://localhost:8080/fetch').then(res => res.json())
       .then((questions) => {
         this.updateQuestions(questions);
-        fetch(`/responses/${this.props.userName}`).then(res => res.json())
+        console.log('questions: ', questions);
+        fetch(`http://localhost:8080/responses/${this.props.userName}`).then(res => res.json())
           .then((responses) => {
+            console.log('responses: ', responses);
             this.updateResponses(responses);
           });
       });
@@ -95,11 +97,12 @@ class DashBoard extends React.Component {
   render() {
     return (
       <View className="dashboard-main">
-        {/* <Questions
+        <Text> DashBoard here </Text>
+        <Questions
           data={this.state.questions}
           responses={this.state.responses}
           updateResponses={this.updateUserResponses}
-        /> */}
+        />
         {/* <button
           className="dashboard-btn"
           disabled={!(this.state.questions.length === Object.keys(this.state.responses).length)}

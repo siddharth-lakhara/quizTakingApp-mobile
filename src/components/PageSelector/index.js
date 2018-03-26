@@ -11,7 +11,7 @@ class PageSelector extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentPage: 'login',
+      currentPage: 'dashboard',
       score: 0,
       maxScore: 0,
     };
