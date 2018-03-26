@@ -9,7 +9,7 @@ import {
   Platform,
   StyleSheet,
   Text,
-  View
+  View,
 } from 'react-native';
 import Headers from './components/header';
 import PageSelector from './components/PageSelector';
@@ -30,7 +30,7 @@ export default class App extends Component {
         {/* <Headers user={this.state.currentUserName} /> */}
         <PageSelector
           user={this.state.currentUserName}
-          updateUserName={userName => fetch('/login', {
+          updateUserName={userName => fetch('http://localhost:8080/login', {
             method: 'POST',
             body: JSON.stringify({
               userName,

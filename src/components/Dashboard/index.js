@@ -1,5 +1,9 @@
 import React from 'react';
-import './dashboard.css';
+// import './dashboard.css';
+import {
+  View,
+  Text,
+} from 'react-native';
 
 // options: Array[4]
 // question: "What is the capital of India"
@@ -90,13 +94,13 @@ class DashBoard extends React.Component {
   }
   render() {
     return (
-      <div className="dashboard-main">
-        <Questions
+      <View className="dashboard-main">
+        {/* <Questions
           data={this.state.questions}
           responses={this.state.responses}
           updateResponses={this.updateUserResponses}
-        />
-        <button
+        /> */}
+        {/* <button
           className="dashboard-btn"
           disabled={!(this.state.questions.length === Object.keys(this.state.responses).length)}
           onClick={() => {
@@ -106,8 +110,8 @@ class DashBoard extends React.Component {
           }}
         >
         Calculate
-        </button>
-      </div>
+        </button> */}
+      </View>
     );
   }
 }

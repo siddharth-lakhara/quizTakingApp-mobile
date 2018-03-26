@@ -4,7 +4,7 @@ import {
   Text,
 } from 'react-native';
 import LoginPage from '../LoginPage';
-// import DashBoard from '../Dashboard';
+import DashBoard from '../Dashboard';
 // import LeaderBoard from '../LeaderBoard';
 
 class PageSelector extends React.Component {

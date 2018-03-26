@@ -2,7 +2,6 @@ import { StyleSheet } from 'react-native';
 
 module.exports = StyleSheet.create({
   LoginPageMain: {
-    backgroundColor: '#18224B',
     flex: 1,
   },
 
@@ -19,23 +18,26 @@ module.exports = StyleSheet.create({
     fontWeight: 'bold',
   },
 
-  LoginCardLeftText2: {
+  LoginCardTopText2: {
     color: 'white',
     fontWeight: 'bold',
     fontSize: 45,
   },
 
-  LoginCardRight: {
-    fontSize: 30,
-    textAlign: 'left',
+  LoginCardBottom: {
+    // textAlign: 'left',
     backgroundColor: 'white',
-    width: '30%',
-    height: 400,
-    display: 'flex',
+    width: '100%',
+    height: '50%',
+    flex: 1,
+    flexDirection: 'row',
+    // marginBottom: 20,
+    // height: 400,
+    // display: 'flex',
   },
 
   loginContentsAligner: {
-    height: 400,
+    height: '50%',
     width: '11%',
   },
 
@@ -43,6 +45,7 @@ module.exports = StyleSheet.create({
     flex: 1,
     // display: 'flex',
     justifyContent: 'space-around',
+    marginBottom: 20,
   },
 
   userNameInput: {
@@ -57,7 +60,7 @@ module.exports = StyleSheet.create({
   //     outline: 0,
   // },
 
-  LoginCardRightBtn: {
+  LoginCardBottomBtn: {
     alignSelf: 'center',
     borderWidth: 2,
     borderColor: 'black',
@@ -65,8 +68,12 @@ module.exports = StyleSheet.create({
     borderRadius: 20,
     width: '70%',
     padding: 10,
-    fontSize: 30,
+    // fontSize: 30,
     marginLeft: -15,
+  },
+
+  LoginCardBottomText: {
+    fontSize: 30,
   },
 
 });
