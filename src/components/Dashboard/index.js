@@ -4,6 +4,7 @@ import {
   View,
   Text,
   ScrollView,
+  Button,
 } from 'react-native';
 import RadioForm from 'react-native-simple-radio-button';
 import styles from './dashboardStyles';
@@ -18,16 +19,20 @@ const Questions = (props) => {
       <View><Text style={styles.QuestionIndex}>Question {index + 1}</Text></View>;
     const questionText =
       <View><Text style={styles.QuestionText}> {questions.question} </Text></View>;
-    let selectedIndex = null;
+    let selectedIndex = -1;
     const optionArray = questions.options.map((e, optionIndex) => {
-      if (responses[questions.questionid] === e) { selectedIndex = optionIndex; }
+      if (responses[questions.questionid] === e) {
+        selectedIndex = optionIndex;
+        console.log('selected index: ', selectedIndex);
+      }
       return ({ label: e, value: e });
     });
-    console.log(optionArray);
+    // console.log(optionArray);
     const optionDiv = (
       <RadioForm
         radio_props={optionArray}
         initial={selectedIndex}
+        buttonColor="#50C900"
         onPress={(value) => {
           responses[questions.questionid] = value;
           props.updateResponses(responses, questions.questionid);
@@ -108,17 +113,16 @@ class DashBoard extends React.Component {
             updateResponses={this.updateUserResponses}
           />
         </ScrollView>
-        {/* <button
+        <Button
           className="dashboard-btn"
           disabled={!(this.state.questions.length === Object.keys(this.state.responses).length)}
-          onClick={() => {
+          title="Calculate"
+          onPress={() => {
             calculateScore(this.props.userName).then((score) => {
               this.props.changePage(score);
             });
           }}
-        >
-        Calculate
-        </button> */}
+        />
       </View>
     );
   }

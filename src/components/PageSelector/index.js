@@ -5,15 +5,15 @@ import {
 } from 'react-native';
 import LoginPage from '../LoginPage';
 import DashBoard from '../Dashboard';
-// import LeaderBoard from '../LeaderBoard';
+import LeaderBoard from '../LeaderBoard';
 
 class PageSelector extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentPage: 'dashboard',
-      score: 0,
-      maxScore: 0,
+      currentPage: 'leaderBoard',
+      score: 3,
+      maxScore: 5,
     };
   }
 
@@ -63,7 +63,7 @@ class PageSelector extends React.Component {
       }
 
       default: {
-        return (<View> Invalid Page</View>);
+        return (<View> <Text>Invalid Page </Text></View>);
       }
     }
   }
