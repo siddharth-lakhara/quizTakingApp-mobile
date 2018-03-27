@@ -1,6 +1,10 @@
 import { StyleSheet } from 'react-native';
 
 module.exports = StyleSheet.create({
+  dashboardMain: {
+    flex: 1,
+  },
+
   QuestionIndex: {
     padding: 10,
   },
@@ -9,7 +13,6 @@ module.exports = StyleSheet.create({
     borderWidth: 2,
     borderColor: 'black',
     borderStyle: 'solid',
-    // borderCollapse: 'collapse',
     padding: 10,
     backgroundColor: '#6BC5F0',
   },
@@ -19,15 +22,17 @@ module.exports = StyleSheet.create({
     borderColor: 'black',
     borderStyle: 'solid',
     margin: 30,
-    textAlign: 'left',
+
   },
 
   QuestionOptionsElem: {
-    padding: 5,
+    // padding: 5,
+    textAlign: 'left',
   },
 
   QuestionOptions: {
-    padding: 10,
+    // padding: 10,
+
   },
 
   dashboardBtn: {

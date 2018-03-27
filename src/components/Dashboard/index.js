@@ -3,8 +3,9 @@ import React from 'react';
 import {
   View,
   Text,
+  ScrollView,
 } from 'react-native';
-import { RadioButtons } from 'react-native-radio-buttons';
+import RadioForm from 'react-native-simple-radio-button';
 import styles from './dashboardStyles';
 // options: Array[4]
 // question: "What is the capital of India"
@@ -13,40 +14,43 @@ import styles from './dashboardStyles';
 const Questions = (props) => {
   const { data, responses } = props;
   const questionBox = data.map((questions, index) => {
-    const questionTitle = <View><Text style={styles.QuestionIndex}>Questions {index + 1}</Text></View>;
-    const questionText = <View><Text style={styles.QuestionText}> {questions.question} </Text></View>;
-    const optionArray = questions.options;
+    const questionTitle =
+      <View><Text style={styles.QuestionIndex}>Question {index + 1}</Text></View>;
+    const questionText =
+      <View><Text style={styles.QuestionText}> {questions.question} </Text></View>;
+    let selectedIndex = null;
+    const optionArray = questions.options.map((e, optionIndex) => {
+      if (responses[questions.questionid] === e) { selectedIndex = optionIndex; }
+      return ({ label: e, value: e });
+    });
     console.log(optionArray);
-    // const optionDiv = optionArray.map(e => (
-    //   <View style={styles.QuestionOptionsContainer}>
-    //     <RadioButtons
-    //       options={e}
-    //       style={styles.QuestionOptionsElem}
-    //       selectedOption={responses[questions.questionid] === e}
-    //       onSelection={(event) => {
-    //         responses[questions.questionid] = (event.target.value);
-    //         props.updateResponses(responses, questions.questionid);
-    //       }}
-    //     />
-    //     {/* &nbsp;{e}<br /> */}
-    //   </View>
-    // ));
+    const optionDiv = (
+      <RadioForm
+        radio_props={optionArray}
+        initial={selectedIndex}
+        onPress={(value) => {
+          responses[questions.questionid] = value;
+          props.updateResponses(responses, questions.questionid);
+        }}
+      />
+    );
     return (
       <View style={styles.questionBox} key={questions.questionid}>
         {questionTitle}
         {questionText}
-        {/* <View className="Question-options">
-          {optionDiv}
-        </View> */}
+        <View style={styles.QuestionOptions}>
+          <Text style={styles.QuestionOptionsElem}>
+            {optionDiv}
+          </Text>
+        </View>
       </View>
     );
   });
-
   return questionBox;
 };
 
 const calculateScore = userName =>
-  fetch(`/calc/${userName}`)
+  fetch(`http://localhost:8080/calc/${userName}`)
     .then(res => res.json())
     .then(res => res.score);
 
@@ -89,20 +93,21 @@ class DashBoard extends React.Component {
       questionid,
       answer: responses[questionid],
     };
-    fetch('/responses', {
+    fetch('http://localhost:8080/responses', {
       method: 'POST',
       body: JSON.stringify(postData),
-    });
+    }).then(() => {});
   }
   render() {
     return (
-      <View className="dashboard-main">
-        <Text> DashBoard here </Text>
-        <Questions
-          data={this.state.questions}
-          responses={this.state.responses}
-          updateResponses={this.updateUserResponses}
-        />
+      <View style={styles.dashboardMain}>
+        <ScrollView>
+          <Questions
+            data={this.state.questions}
+            responses={this.state.responses}
+            updateResponses={this.updateUserResponses}
+          />
+        </ScrollView>
         {/* <button
           className="dashboard-btn"
           disabled={!(this.state.questions.length === Object.keys(this.state.responses).length)}

@@ -1,17 +1,18 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 
 module.exports = StyleSheet.create({
-  App:{
+  App: {
     // textAlign: 'center',
     marginTop: 20,
     flex: 1,
+    overflow: 'visible',
   },
 
   AppTitle: {
     fontSize: 10,
   },
 
-  AppIntro:{
+  AppIntro: {
     fontSize: 20,
-  }
+  },
 });
