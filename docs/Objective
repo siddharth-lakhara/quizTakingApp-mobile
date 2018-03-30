@@ -1,0 +1,29 @@
+
+*************************************
+
+            QUIZ TAKER APP
+
+*************************************
+
+Upload your question and answers on server
+
+/dev api will fetch responses from server and update DB
+
+First Screen- Login:
+    User logs into account, for new user, new User is created in DB
+    For old users, their old answers are loaded
+
+Second Screen- Quiz:
+    Classic quiz screen. Each question carries 1 points
+    The submit button will be disabled unitil all questions are answered
+
+Third Screen- Leaderboard
+    Displays your score and top performers
+    Your name is highlighted if you are in leaderboard
+    User can retake the quiz from here
+
+        ***
+
+The design which I aimed for can be found in images folder
+Expected server responses can be found in ServerResponses folder
+If my servers are not running you can create your own AWS lambda functions, from lambdaFunction files

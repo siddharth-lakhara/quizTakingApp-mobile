@@ -1,0 +1,63 @@
+https://5gj1qvkc5h.execute-api.us-east-1.amazonaws.com/dev/findAnswerById/23
+
+
+12:
+{
+    "answer": "New Delhi"
+}
+
+23:
+{
+    "answer": "Kabul"
+}
+
+34:
+{
+    "answer": "Antananarivo"
+}
+
+45:
+{
+    "answer": "Majuro"
+}
+
+56:
+{
+    "answer": "Palikir"
+}
+
+67:
+{
+    "answer": "Majuro"
+}
+
+78:
+{
+    "answer": "Palikir"
+}
+
+89:
+{
+    "answer": "Podgorica"
+}
+
+90:
+{
+    "answer": "Windhoek"
+}
+
+102:
+{
+    "answer": "Abuja"
+}
+
+120:
+{
+    "answer": "Muscat"
+}
+
+123:
+{
+    "answer": "Ngerulmud"
+}
+
