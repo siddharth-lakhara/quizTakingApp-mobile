@@ -72,6 +72,15 @@ class DashBoard extends React.Component {
   componentDidMount() {
     fetch('http://localhost:8080/fetch').then(res => res.json())
       .then((questions) => {
+        if (questions.length === 0) {
+          // update the db
+          fetch('/updatedb').then(() => {
+            fetch('/fetch').then(res => res.json())
+              .then((questionsNew) => {
+                this.updateQuestions(questionsNew);
+              });
+          });
+        }
         this.updateQuestions(questions);
         console.log('questions: ', questions);
         fetch(`http://localhost:8080/responses/${this.props.userName}`).then(res => res.json())
